@@ -1,0 +1,84 @@
+.post_card {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.flex {
+  display: flex;
+}
+
+.usernames {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.options {
+  flex-wrap: nowrap;
+}
+
+.post_infos_container {
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+}
+
+.right{
+  width:100%;
+}
+
+.caption {
+  margin-top: 0.8rem;
+}
+.thePost {
+  margin-top: 1rem;
+}
+
+.post_img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.heart{
+  font-size: 1.3rem;
+  cursor: pointer;
+  
+}
+
+.delete{
+  font-size: 1.3rem;
+  cursor: pointer;
+  color:red
+}
+
+
+.heart:hover{
+  color:red;
+}
+
+.heartClicked{
+  font-size: 1.3rem;
+  cursor: pointer;
+  color:red
+}
+
+
+.likeOptions{
+  padding-top: 2rem;
+  display: flex;
+  gap:1rem;
+  align-items: center;
+}
+
+.likeOnlyContainer{
+  display: flex;
+  gap: 0.2rem;
+}
+
+.red{
+  color:red
+}

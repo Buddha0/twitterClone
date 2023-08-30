@@ -1,0 +1,54 @@
+.post_container {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid black;
+  }
+  
+  .inputField {
+    width: 100%;
+  }
+  
+  .other_options {
+    border-top: 1px solid black;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .options {
+    display: flex;
+    gap: 0.3rem;
+    cursor: pointer;
+  }
+  
+  .btn_post {
+    padding: 0.8rem 2rem; 
+    border: none;
+    color: white;
+    background-color: #1a8cd8;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  
+  .imagePreviewContainer{
+    position: relative;
+  }
+
+  .imagePreviewContainer p{
+    font-weight: bold;
+    position: absolute;
+    top:-15px;
+    right: 0;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .imagePreview{
+    width:100%;
+    height:250px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  

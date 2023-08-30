@@ -1,0 +1,46 @@
+.sidebar{
+
+  width:330px;
+  position: fixed;
+  left:0;
+  top:0;
+  padding-left: 4rem;
+  padding-top: 1rem;
+  height:100vh;
+
+}
+
+.sidebar_contents_container{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    padding-right: 2rem;
+}
+.sidebar_content{
+cursor: pointer;
+padding:0.6rem 0.5rem;
+    }
+
+.sidebar_content:hover{
+background-color: rgb(235, 235, 235);
+padding:0.6rem 0.5rem;
+border-radius: 30px;
+}
+
+.btn_post{
+margin:1rem 0rem;
+    padding:1rem 1rem;
+    border:none;
+    color:white;
+    background-color: #1A8CD8;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.profileContainer{
+    margin-top: 1rem;
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+}
