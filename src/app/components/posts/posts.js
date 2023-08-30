@@ -7,34 +7,34 @@ import { AiFillDelete } from "react-icons/ai"
 import { useEffect, useState } from "react";
 import { doc, onSnapshot, setDoc, collection, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebaseConfig"
+import { deleteObject, ref } from "firebase/storage";
+import { storage } from "../../firebaseConfig/firebaseConfig"
 
 
 
 export default function Posts({ post, user }) {
+
     const [liked, setLiked] = useState(false)
     const [likes, setLikes] = useState([])
+
+
+
     useEffect(() => {
-        const unsubscribe = onSnapshot(
+        onSnapshot(
             collection(db, "posts", post.id, "likes"),
             (snapshot) => {
                 const likesArr = [];
                 snapshot.forEach((doc) => {
-
                     likesArr.push({ ...doc.data(), id: doc.id });
                     setLikes(likesArr)
                 });
-
-                console.log("likes array:", likesArr);
             }
         );
-
-
 
     }, [db]);
 
     useEffect(() => {
         const isLiked = likes.map(like => like.id).includes(user?.uid);
-        console.log(isLiked)
         setLiked(isLiked);
     }, [likes]);
 
@@ -54,10 +54,20 @@ export default function Posts({ post, user }) {
         }
     }
 
+    async function handleDelete() {
+        if(window.confirm("Are you sure you want to delete this? ")){
+            deleteDoc(doc(db, "posts", post.id))
+        if(post.data.iamge){
+            deleteObject(ref(storage, `posts/${post.id}/image`))
+        }
+      
+            
+          
+        }
+    
+    }
 
-    useEffect(() => {
-        console.log(likes)
-    }, [likes])
+
 
     return (
         <>
@@ -65,7 +75,7 @@ export default function Posts({ post, user }) {
                 <div className={styles.post_card}>
                     <div className={styles.left}>
                         <Image
-                            src={post?.photo}
+                            src={post?.data.photo}
                             width={50}
                             height={50}
                             className="profile"
@@ -76,8 +86,8 @@ export default function Posts({ post, user }) {
 
                         <div className={styles.post_infos_container}>
                             <div className={styles.usernames}>
-                                <p>{post.name} ~</p>
-                                <p> <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
+                                <p>{post.data.name} ~</p>
+                                <p> <Moment fromNow>{post?.data.timestamp?.toDate()}</Moment>
                                 </p>
 
 
@@ -87,11 +97,11 @@ export default function Posts({ post, user }) {
 
 
                         <div className={styles.caption}>
-                            <p>{post.text}</p>
+                            <p>{post.data.text}</p>
                         </div>
-                        {post.image && <div className={styles.thePost}>
+                        {post?.data?.image && <div className={styles.thePost}>
                             <Image
-                                src={post?.image}
+                                src={post?.data?.image}
                                 width={400}
                                 height={400}
                                 className={styles.post_img}
@@ -102,8 +112,8 @@ export default function Posts({ post, user }) {
                                 <AiFillHeart className={liked ? styles.heartClicked : styles.heart} onClick={likePost} />
                                 {<p className={liked && styles.red}>{likes.length}</p>}
                             </div>
+                            {user.uid === post.data.id && <AiFillDelete className={styles.delete} onClick={handleDelete} />}
 
-                            <AiFillDelete className={styles.delete} />
                         </div>
 
 

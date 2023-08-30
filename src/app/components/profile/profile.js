@@ -22,6 +22,7 @@ export default function Profile({ user }) {
     async function sendPost() {
 
         try {
+            // adding data to the posts . includes the user message and user infos which i got from auth.
             const docRef = await addDoc(collection(db, "posts"), {
                 text: inputValue,
                 id: user.uid,
@@ -31,7 +32,9 @@ export default function Profile({ user }) {
 
             });
 
+         // adding image to the storage 
             const imagesRef = ref(storage, `posts/${docRef.id}/image`);
+            //if the image is selected then only i want to send it 
             if (selectedFile) {
                 uploadString(imagesRef, selectedFile, 'data_url').then(async () => {
                     const downloadURL = await getDownloadURL(imagesRef);
