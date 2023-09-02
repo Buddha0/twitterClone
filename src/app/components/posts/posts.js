@@ -2,19 +2,19 @@
 import styles from "./posts.module.css";
 import Image from "next/image";
 import Moment from "react-moment";
-import { AiFillHeart,AiFillDelete,AiOutlineComment } from "react-icons/ai";
-import {  FiMoreHorizontal } from "react-icons/fi"
+import { AiFillHeart, AiFillDelete, AiOutlineComment } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi"
 import { useEffect, useState } from "react";
 import { doc, onSnapshot, setDoc, collection, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebaseConfig"
 import { deleteObject, ref } from "firebase/storage";
 import { storage } from "../../firebaseConfig/firebaseConfig"
 import { useRecoilState } from "recoil";
-import { modalState, postIdState} from "@/app/recoil/modalAtom";
+import { modalState, postIdState } from "@/app/recoil/modalAtom";
 
 
 
-export default function Posts({ user ,post,id}) {
+export default function Posts({ user, post, id }) {
 
 
     const [openModal, setOpenModal] = useRecoilState(modalState)
@@ -22,55 +22,55 @@ export default function Posts({ user ,post,id}) {
     const [liked, setLiked] = useState(false)
     const [likes, setLikes] = useState([])
     const [comments, setComments] = useState([])
-  
+
 
 
     useEffect(() => {
-        if(id){
-            console.log("fukcccccc",id)
+        if (id) {
+            console.log("fukcccccc", id)
             const unsubscribe = onSnapshot(
                 collection(db, "posts", id, "likes"),
                 (snapshot) => {
-                  const likesArr = [];
-                  snapshot.forEach((doc) => {
-                    likesArr.push({ ...doc.data(), id: doc.id });
-                  });
-            
-                  // Update the likes state outside the loop
-                  setLikes(likesArr);
-                }
-              );
-             
-        return () => {
-          unsubscribe();
-        };
-        }
-   
-      
-        
-      }, [db,id]);
+                    const likesArr = [];
+                    snapshot.forEach((doc) => {
+                        likesArr.push({ ...doc.data(), id: doc.id });
+                    });
 
-      useEffect(() => {
-        if(id){
-            const unsubscribe = onSnapshot(
-                collection(db, "posts", id, "comment"),(snapshot) => {
-                  const commentArr = [];
-                  snapshot.forEach((doc) => {
-                    commentArr.push({ ...doc.data(), id: doc.id });
-                  });
-            
-                  // Update the likes state outside the loop
-                  setComments(commentArr);
+                    // Update the likes state outside the loop
+                    setLikes(likesArr);
                 }
-              );
-            
-              // Cleanup the subscription when the component unmounts
-              return () => {
+            );
+
+            return () => {
                 unsubscribe();
-              };
+            };
         }
-       
-      }, [db,id]);
+
+
+
+    }, [db, id]);
+
+    useEffect(() => {
+        if (id) {
+            const unsubscribe = onSnapshot(
+                collection(db, "posts", id, "comment"), (snapshot) => {
+                    const commentArr = [];
+                    snapshot.forEach((doc) => {
+                        commentArr.push({ ...doc.data(), id: doc.id });
+                    });
+
+                    // Update the likes state outside the loop
+                    setComments(commentArr);
+                }
+            );
+
+            // Cleanup the subscription when the component unmounts
+            return () => {
+                unsubscribe();
+            };
+        }
+
+    }, [db, id]);
 
     useEffect(() => {
         const isLiked = likes.map(like => like.id).includes(user?.uid);
@@ -102,7 +102,7 @@ export default function Posts({ user ,post,id}) {
         }
     }
 
-    function openComment(){
+    function openComment() {
         setPostId(id)
         setOpenModal(true)
     }
@@ -131,7 +131,7 @@ export default function Posts({ user ,post,id}) {
 
 
                             </div>
-                        < FiMoreHorizontal/>
+                            < FiMoreHorizontal />
                         </div>
 
 
@@ -139,12 +139,15 @@ export default function Posts({ user ,post,id}) {
                             <p>{post?.data?.text}</p>
                         </div>
                         {post?.data?.image && <div className={styles.thePost}>
-                            <Image
-                                src={post?.data?.image}
-                                width={400}
-                                height={400}
-                                className={styles.post_img}
-                            />
+                            <div className={styles.image_container}>
+                                <Image
+                                    src={post?.data?.image}
+                             
+                                    layout="fill"
+                                    className={styles.post_img}
+                                />
+                            </div>
+
                         </div>}
                         <div className={styles.likeOptions}>
                             <div className={styles.likeOnlyContainer}>
@@ -152,11 +155,11 @@ export default function Posts({ user ,post,id}) {
                                 {<p className={liked && styles.red}>{likes.length}</p>}
                             </div>
                             {user?.uid === post?.data?.id && <AiFillDelete className={styles.delete} onClick={handleDelete} />}
-                        
+
 
                             <div className={styles.likeOnlyContainer}>
-                            <AiOutlineComment onClick={openComment} className={styles.comment} />
-                            {<p>{comments.length}</p>}
+                                <AiOutlineComment onClick={openComment} className={styles.comment} />
+                                {<p>{comments.length}</p>}
                             </div>
 
                         </div>

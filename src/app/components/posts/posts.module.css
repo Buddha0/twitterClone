@@ -23,11 +23,11 @@
 .post_infos_container {
   display: flex;
   justify-content: space-between;
-  width:100%;
+  width: 100%;
 }
 
-.right{
-  width:100%;
+.right {
+  width: 100%;
 }
 
 .caption {
@@ -36,61 +36,67 @@
 .thePost {
   margin-top: 1rem;
 }
+.image_container {
+  width: 100%;
+  position: relative;
+  height: 300px;
+  border-radius: 20px;
+
+}
 
 .post_img {
   width: 100%;
-  object-fit: cover;
-  border-radius: 12px;
+  object-fit: contain;
+  border-radius: 20px;
+ 
 }
 
-.heart{
-  font-size: 1.3rem;
-  cursor: pointer;
-  
-}
-
-.delete{
-  font-size: 1.3rem;
-  cursor: pointer;
-  color:red
-}
-
-
-.heart:hover{
-  color:red;
-}
-
-.heartClicked{
-  font-size: 1.3rem;
-  cursor: pointer;
-  color:red
-}
-
-.comment{
+.heart {
   font-size: 1.3rem;
   cursor: pointer;
 }
 
+.delete {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: red;
+}
 
-.likeOptions{
+.heart:hover {
+  color: red;
+}
+
+.heartClicked {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: red;
+}
+
+.comment {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.likeOptions {
   padding-top: 2rem;
   display: flex;
-  gap:1rem;
+  gap: 1rem;
   align-items: center;
 }
 
-.likeOnlyContainer{
+.likeOnlyContainer {
   display: flex;
   gap: 0.2rem;
 }
 
-.red{
-  color:red
+.red {
+  color: red;
 }
- 
 
-.comments{
+.comments {
   padding-left: 4rem;
 }
 
-
+.comment_container {
+  width: 100%;
+}

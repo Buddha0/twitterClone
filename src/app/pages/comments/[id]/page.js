@@ -12,11 +12,6 @@ import { auth, db } from '@/app/firebaseConfig/firebaseConfig'
 import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { useRouter } from 'next/navigation';
 
-
-
-
-
-
 export default function Comments({ params }) {
     const router = useRouter()
     const [post, setPost] = useState(null)
@@ -36,9 +31,7 @@ export default function Comments({ params }) {
                     data: doc.data(),
                     id: doc.id
                 })
-
         });
-
     }, [db, id])
 
 
@@ -72,7 +65,6 @@ export default function Comments({ params }) {
 
 
     useEffect(() => {
-
         const unsubscribe = auth.onAuthStateChanged((user) => {
 
             if (user) {
@@ -94,22 +86,16 @@ export default function Comments({ params }) {
         <>
             {isAuth ?
                 <>
-                    <div className='container'>
+                    <div className= {styles.comment_container}>
                         <Sidebar user={user} />
                         <div className="flex">
                             <div className={styles.main}>
                                 <div className={styles.title}>
                                     <div className='row'>
                                         <h1>Comments</h1>
-                                        < IoMdArrowRoundBack className='arrow-back' onClick={()=>router.push("/")} />
+                                        < IoMdArrowRoundBack className='arrow-back' onClick={() => router.push("/")} />
                                     </div>
-
-
-
                                 </div>
-
-
-
 
 
                                 <Posts post={post} id={post?.id} user={user} />
@@ -122,17 +108,9 @@ export default function Comments({ params }) {
                                                 originalPostId={id}
                                                 user={user}
                                             />
-
-
                                         </>
                                     )
-
-
                                 })}
-
-
-
-
 
                             </div>
                             <News />

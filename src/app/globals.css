@@ -130,3 +130,9 @@ pointer-events: none;
   font-size: 2rem;
   cursor: pointer;
 }
+
+@media(max-width:700px){
+.flex{
+  margin-left: 0px;
+}
+}
