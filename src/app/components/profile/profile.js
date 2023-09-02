@@ -7,6 +7,9 @@ import { collection, addDoc, serverTimestamp, updateDoc, doc } from "firebase/fi
 import { db } from "../../firebaseConfig/firebaseConfig"
 import { storage } from "../../firebaseConfig/firebaseConfig"
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import { FcGallery} from "react-icons/fc";
+import { GrEmoji } from "react-icons/gr";
+
 
 
 
@@ -42,7 +45,6 @@ export default function Profile({ user }) {
                         image: downloadURL,
                     });
                 })
-
             }
 
             setInputValue("")
@@ -57,7 +59,6 @@ export default function Profile({ user }) {
         const reader = new FileReader()
         if (e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0])
-
         }
 
         reader.onload = (readerEvent) => {
@@ -96,13 +97,13 @@ export default function Profile({ user }) {
                     <div className={styles.other_options}>
                         <div className={styles.options}>
                             <div>
-                                <p onClick={() => filePickerRef.current.click()}>Gallery</p>
+                                < FcGallery  onClick={() => filePickerRef.current.click()} className="icon"/>
                                 <input type="file" hidden ref={filePickerRef}
                                     onChange={sendFileToPost} />
 
                             </div>
 
-                            <p>Emoji</p>
+                        <GrEmoji className="icon"/>
                         </div>
 
                         <button className={styles.btn_post} disabled={!inputValue.trim()}

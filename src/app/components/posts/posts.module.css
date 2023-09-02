@@ -3,7 +3,7 @@
   display: flex;
   gap: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(218, 218, 218);
 }
 
 .flex {
@@ -66,6 +66,11 @@
   color:red
 }
 
+.comment{
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
 
 .likeOptions{
   padding-top: 2rem;
@@ -82,3 +87,10 @@
 .red{
   color:red
 }
+ 
+
+.comments{
+  padding-left: 4rem;
+}
+
+

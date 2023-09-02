@@ -1,0 +1,101 @@
+.modal_container {
+  max-width: 600px;
+  min-height: 300px;
+  background-color: white;
+  border-radius: 12px;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  box-shadow: 2px 2px 4px black;
+}
+
+.close_btn {
+  font-size: 2.4rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.close_btn:hover {
+  background-color: rgb(226, 226, 226);
+}
+
+.modal_container_infos {
+  padding: 1rem;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+min-height: 20vh;
+  gap: 1rem;
+
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:0.3rem;
+}
+
+.line{
+  width:1px;
+  background-color:rgb(218, 218, 218);
+  
+  height:100%;
+  z-index: 999;
+}
+
+.top {
+  display: flex;
+  gap: 0.5rem;
+}
+.bottom {
+  margin-top: 0.5rem;
+}
+.column {
+  display: column;
+}
+
+
+.reply{
+  display: flex;
+  gap:1rem;
+
+}
+
+.inputField {
+  width: 100%;
+}
+
+.btn_post {
+  padding: 0.8rem 2rem; 
+  border: none;
+  color: white;
+  background-color: #1a8cd8;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.options{
+  display: flex;
+  gap:1rem;
+}
+
+.space_between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+

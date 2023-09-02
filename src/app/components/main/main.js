@@ -4,11 +4,16 @@ import Posts from "../posts/posts";
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
 import { db } from "../../firebaseConfig/firebaseConfig"
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRecoilState } from "recoil";
+import { postState } from "@/app/recoil/modalAtom";
+
 
 
 
 export default function Main({ user }) {
-  const [posts, setPosts] = useState([])
+ 
+  const [post,setPost] = useRecoilState(postState)
 
   //getting realtime update of the posts. if i post something it will show up right away.
   useEffect(() => {
@@ -24,7 +29,8 @@ export default function Main({ user }) {
           });
 
         });
-        setPosts(postsArr);
+
+        setPost(postsArr)
 
       }
     );
@@ -34,6 +40,7 @@ export default function Main({ user }) {
   }, []);
 
 
+
   return (
     <div className={styles.main}>
       <div className={styles.title}>
@@ -41,9 +48,26 @@ export default function Main({ user }) {
       </div>
 
       <Profile user={user} />
-      {posts.map((post) => {
-        return <Posts post={post} user={user} />
-      })}
+
+      <AnimatePresence>
+        {post.map((post) => {
+          return (
+            <motion.div
+            key={post.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{opacity:0}}
+              transition={{ duration: 0.5, delay: 0.3 }}
+
+            >
+
+              <Posts user={user} id = {post.id} post = {post}/>
+            </motion.div>
+
+          )
+        })}
+      </AnimatePresence>
+
 
 
     </div>

@@ -3,6 +3,7 @@ import Sidebar from './components/sidebar/sidebar'
 import News from './components/news/news'
 import Main from './components/main/main'
 import Auth from './pages/Auth/page'
+import Modal from './components/modal/modal'
 import styles from './page.module.css'
 import { auth } from "./firebaseConfig/firebaseConfig"
 import { useState, useEffect } from 'react'
@@ -41,6 +42,7 @@ export default function Home() {
           <div className={styles.flex}>
             <Main user = {user} />
             <News />
+            <Modal user = {user} />
           </div>
         </div>
         </> 
