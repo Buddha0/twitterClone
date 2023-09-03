@@ -51,4 +51,16 @@
     object-fit: contain;
     border-radius: 12px;
   }
+
+  .close{
+    font-size: 2rem;
+    position: absolute;
+    right:0;
+    top:-30px;
+    cursor: pointer;
+    z-index: 999;
+  
+  }
+
+ 
   

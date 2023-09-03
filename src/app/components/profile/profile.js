@@ -9,6 +9,7 @@ import { storage } from "../../firebaseConfig/firebaseConfig"
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
 import { FcGallery} from "react-icons/fc";
 import { GrEmoji } from "react-icons/gr";
+import {AiOutlineClose} from "react-icons/ai"
 
 
 
@@ -91,7 +92,8 @@ export default function Profile({ user }) {
                         {selectedFile && <Image src={selectedFile}
                             width={300}
                             height={300} className={styles.imagePreview}></Image>}
-                           {selectedFile &&<p onClick={()=>setSelectedFile(null)}> Close</p> } 
+                           {selectedFile &&
+                            <AiOutlineClose  onClick={()=>setSelectedFile(null)} className={styles.close}/> } 
                     </div>
 
                     <div className={styles.other_options}>

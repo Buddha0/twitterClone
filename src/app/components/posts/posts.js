@@ -27,7 +27,7 @@ export default function Posts({ user, post, id }) {
 
     useEffect(() => {
         if (id) {
-            console.log("fukcccccc", id)
+    
             const unsubscribe = onSnapshot(
                 collection(db, "posts", id, "likes"),
                 (snapshot) => {

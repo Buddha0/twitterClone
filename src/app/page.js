@@ -1,6 +1,6 @@
 "use client"
 import Sidebar from './components/sidebar/sidebar'
-import News from './components/news/news'
+import RightSidebar from './components/rightSidebar/rightSidebar'
 import Main from './components/main/main'
 import Auth from './pages/Auth/page'
 import Modal from './components/modal/modal'
@@ -41,7 +41,7 @@ export default function Home() {
           <Sidebar user = {user} />
           <div className={styles.flex}>
             <Main user = {user} />
-            <News />
+            <RightSidebar  />
             <Modal user = {user} />
           </div>
         </div>

@@ -1,7 +1,7 @@
 "use client"
 import Sidebar from '@/app/components/sidebar/sidebar'
 import UserComment from '@/app/components/userComment/userComment'
-import News from '@/app/components/news/news'
+import News from '@/app/components/rightSidebar/rightSidebar'
 import { IoMdArrowRoundBack } from "react-icons/io";
 import styles from "@/app/components/main/main.module.css"
 import Auth from '../../Auth/page'

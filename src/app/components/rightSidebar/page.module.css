@@ -1,0 +1,46 @@
+.rightSidebarContainer{
+padding:1rem;
+  flex-basis: 43%;
+  min-height: 200vh;
+}
+
+.input{
+  width:100%;
+  padding:1rem 1rem;
+  border-radius: 20px;
+  border: none;
+  background-color:#F7F9F9;
+  outline-color: #BCE1FB;
+
+}
+
+.input:focus{
+  background-color: white;
+}
+
+.newsContainer{
+  background-color: #F7F9F9;
+  border-radius: 12px;
+  padding:1rem;
+  margin-top: 2rem;
+}
+
+
+.mainHeading{
+  font-size: 1.5rem;
+  padding:1rem;
+}
+
+.showMore{
+  color: #1A8CD8;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+
+
+@media(max-width:700px){
+   .news{
+    display: none;
+   }
+     }
