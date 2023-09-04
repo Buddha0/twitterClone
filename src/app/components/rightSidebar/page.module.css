@@ -1,7 +1,7 @@
 .rightSidebarContainer{
 padding:1rem;
   flex-basis: 43%;
-  min-height: 200vh;
+  min-height: 100vh;
 }
 
 .input{
@@ -38,6 +38,11 @@ padding:1rem;
 }
 
 
+@media(max-width:1000px){
+  .rightSidebarContainer{
+   display: none;
+  }
+    }
 
 @media(max-width:700px){
    .news{

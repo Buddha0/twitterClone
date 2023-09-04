@@ -19,7 +19,10 @@ export default function Auth() {
 
     return (
         <>
-            <button onClick={handleAuth}> Sign in With Google</button>
+        <div className="signIn">
+        <button onClick={handleAuth} className="signInBtn"> Sign in With Google</button>
+        </div>
+         
         </>
     )
 }
